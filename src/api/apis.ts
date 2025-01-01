@@ -12,9 +12,9 @@ export const getCaptcha = (data) => {
   return getApi('/user/getCaptcha', { ...data });
 };
 
-export const isLogin = () => {
-  return getApi('/user/isLogin', {});
-};
+// export const isLogin = () => {
+//   return getApi('/user/isLogin', {});
+// };
 
 export const uploadPic = (data: any) => {
   return posApi('/file/upload', data);
