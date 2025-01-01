@@ -1,0 +1,57 @@
+{
+  "name": "react-mind-map",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@ant-design/icons": "^4.7.0",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@types/node": "^16.11.36",
+    "@types/react": "^18.0.9",
+    "@types/react-dom": "^18.0.5",
+    "antd": "5.22.2",
+    "axios": "^1.7.8",
+    "classnames": "^2.2.6",
+    "copy-to-clipboard": "^3.3.3",
+    "jotai": "^2.10.3",
+    "localStorage": "^1.0.4",
+    "lodash-es": "^4.17.20",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-router": "^7.0.1",
+    "react-router-dom": "^7.0.1",
+    "react-scripts": "5.0.1",
+    "typescript": "^4.7.2"
+  },
+  "devDependencies": {
+    "@craco/craco": "^7.1.0",
+    "@types/classnames": "^2.2.11",
+    "@types/lodash-es": "^4.17.4",
+    "babel-plugin-import": "^1.13.8",
+    "craco-less": "^3.0.1",
+    "sass": "^1.32.4"
+  },
+  "scripts": {
+    "start": "craco start --config config/craco-config.js",
+    "build": "craco build --config config/craco-config.js",
+    "predeploy": "npm run build",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

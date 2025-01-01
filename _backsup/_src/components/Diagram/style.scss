@@ -1,0 +1,264 @@
+// z-index 层级定义
+// Link 层级 ------------------------
+$linkZIndexDefault: 10;
+$linkZIndexActive: 22;
+$linkZIndexHover: 23;
+// Node 层级 ------------------------
+$nodeZIndexDefault: 20;
+$nodeZIndexHover: 21;
+$nodeZIndexActive: 25;
+// segment 层级 ------------------------
+$segmentZIndexDefault: 30;
+
+.diagram {
+  // ----------------------------
+  // Diagram canvas
+  // ----------------------------
+  &-canvas {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-origin: 0 0 0;
+    // border: 1px solid red;
+  }
+
+  // ----------------------------
+  // Diagram node
+  // ----------------------------
+  &-node {
+    position: absolute;
+    z-index: $nodeZIndexDefault;
+    user-select: none;
+    cursor: move;
+    background-color: #ffffff;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    min-width: 100px;
+    max-width: 300px;
+    min-height: 20px;
+
+    &:hover {
+      box-shadow: 0px 3px 24px #000000;
+      z-index: $nodeZIndexHover;
+
+      .diagram-node-action {
+        display: block;
+      }
+    }
+
+    &.active {
+      box-shadow: 0 0 30px 0 rgb(98 104 229 / 50%), 0 0 15px 0 rgb(98 104 229 / 59%), 0 2px 4px 0 rgb(0 0 0 / 24%);
+      z-index: $nodeZIndexActive;
+    }
+
+    &-action {
+      position: absolute;
+      display: none;
+      right: 0;
+      top: -32px;
+      height: 33px;
+
+      .ant-btn {
+        width: 26px;
+        height: 26px;
+        line-height: normal;
+        svg {
+          font-size: 14px;
+        }
+
+        &.ant-btn {
+          margin-left: 6px;
+        }
+      }
+    }
+  }
+
+  // ----------------------------
+  // Port
+  // ----------------------------
+  &-port-wrapper {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    z-index: 1;
+    &.type-input {
+      left: -10px;
+      transform: rotate(-180deg);
+    }
+
+    &.type-output {
+      right: -10px;
+    }
+  }
+  &-port {
+    transition: background-color 0.25s ease-in-out;
+    background-image: url('../../static/linked-port.png');
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background-size: 100% 100%;
+    width: 10px;
+    height: 14px;
+    display: inline-block;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &.is-linked {
+      background-color: #6f9cb1;
+      background-image: none;
+    }
+  }
+
+  // ----------------------------
+  // Segment-canvas
+  // ----------------------------
+  &-segment-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    overflow: visible !important;
+    width: 100%;
+    height: 100%;
+    z-index: $segmentZIndexDefault;
+  }
+
+  &-segment-link {
+    path {
+      stroke: #dae1e7;
+      stroke-width: 2px;
+      stroke-dasharray: 10, 2;
+      fill: transparent;
+      animation: BiDashSegmentAnimation 1s linear infinite;
+    }
+
+    circle {
+      stroke: #dae1e7;
+      stroke-width: 2px;
+      fill: #88cdff;
+    }
+  }
+
+  // ----------------------------
+  // Link canvas layer
+  // ----------------------------
+
+  &-link {
+    pointer-events: stroke;
+    position: absolute;
+    overflow: visible !important;
+    z-index: $linkZIndexDefault;
+    &.hover .bi-link-path {
+      stroke: #88cdff;
+      stroke-dasharray: 10, 2;
+      animation: BiDashSegmentAnimation 1s linear infinite;
+    }
+
+    // link path
+    .bi-link-path {
+      stroke: #dae1e7;
+      stroke-width: 2px;
+      pointer-events: 'none';
+      fill: transparent;
+    }
+
+    // link ghost
+    .bi-link-ghost {
+      pointer-events: visiblestroke;
+      stroke: transparent;
+      stroke-width: 10px;
+      fill: transparent;
+      cursor: pointer;
+    }
+
+    // ----------------------------
+    // Link label
+    // ----------------------------
+    .bi-diagram-link-label {
+      position: absolute;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.3);
+      border-radius: 5px;
+      padding: 2px 4px;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+.mark-line {
+  &-item {
+    pointer-events: none;
+    position: absolute;
+    z-index: 999;
+    visibility: hidden;
+  }
+  .x-direction {
+    width: 100%;
+    height: 0;
+    left: 0;
+    border-top: 1px dashed red;
+  }
+  .y-direction {
+    height: 100%;
+    width: 0;
+    top: 0;
+    border-left: 1px dashed red;
+  }
+}
+
+.select-model {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2000;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.select-model-content {
+  position: relative;
+  background-color: #fff;
+  width: 160px;
+  max-height: 200px;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  border-radius: 4px;
+  list-style: none;
+  padding: 5px 0;
+  overflow: overlay;
+}
+.select-model-item {
+  height: 28px;
+  cursor: pointer;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  &:hover {
+    background-color: #eeeeee;
+  }
+}
+.select-model-text {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-left: 10px;
+}
+
+// ----------------------------
+// Involved animations
+// ----------------------------
+@keyframes BiDashSegmentAnimation {
+  from {
+    stroke-dashoffset: 24;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}

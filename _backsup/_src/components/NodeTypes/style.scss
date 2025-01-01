@@ -1,0 +1,51 @@
+.node-header {
+  background-color: rgba(84, 110, 122, 0.2);
+  height: 30px;
+  line-height: 28px;
+  position: relative;
+
+  &-icon {
+    width: 32px;
+    height: 32px;
+    background-color: #0090d0;
+    border-radius: 4px;
+    position: absolute;
+    left: 8px;
+    top: -8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .anticon {
+      font-size: 22px;
+      color: #fff;
+    }
+  }
+
+  &-text {
+    padding-left: 46px;
+    padding-right: 10px;
+    font-weight: bold;
+    color: #263238;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+.node-content {
+  padding: 8px;
+  .branch-input {
+    position: relative;
+    .diagram-port {
+      position: absolute;
+      z-index: 1;
+      right: -10px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    & + .branch-input {
+      margin-top: 8px;
+    }
+  }
+}

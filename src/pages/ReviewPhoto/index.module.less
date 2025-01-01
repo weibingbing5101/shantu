@@ -1,0 +1,72 @@
+.repvePhotoWarp {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    -webkit-touch-callout: none;
+    /*系统默认菜单被禁用*/
+    -webkit-user-select: none;
+    /*webkit浏览器*/
+    -khtml-user-select: none;
+    /*早起浏览器*/
+    -moz-user-select: none;
+    /*火狐浏览器*/
+    -ms-user-select: none;
+    /*IE浏览器*/
+    user-select: none;
+    /*用户是否能够选中文本*/
+    -webkit-touch-callout: none;
+
+
+    .timeTips {
+        position: absolute;
+        top: 24px;
+        left: 24px;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 2px solid #3e3e3e;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .myCanvasWarp {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .myCanvas {
+            max-width: 100%;
+            max-height: 100%;
+
+            //元素不能成为鼠标事件的target
+            pointer-events: none;
+            -webkit-pointer-events: none;
+            -ms-pointer-events: none;
+            -moz-pointer-events: none;
+            //不能被选择
+            user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -moz-user-select: none;
+
+            //禁用系统默认菜单
+            touch-callout: none;
+            -webkit-touch-callout: none;
+            -ms-touch-callout: none;
+            -moz-touch-callout: none;
+        }
+    }
+
+}
